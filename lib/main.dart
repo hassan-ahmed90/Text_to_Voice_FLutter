@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:text_to_speech/splash_scre.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,6 +8,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
 
 
   @override
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
               centerTitle: true,
             ),
             body: Center(
-              child: TextSpeech(),
+              child: SplashScreen(),
             )
         )
     );
@@ -43,35 +45,37 @@ class TextSpeech extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      child: Padding(
-        padding: EdgeInsets.all(32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextFormField(
+    return Scaffold(
+      body: Container(
+        alignment: Alignment.center,
+        child: Padding(
+          padding: EdgeInsets.all(32),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextFormField(
 
-              controller: textEditingController,
-              decoration: InputDecoration(
-                  labelText: "Write a Speech",
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.green)
-                  ),
-                  errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.yellow)
-                  )
+                controller: textEditingController,
+                decoration: InputDecoration(
+                    labelText: "Write a Speech",
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.green)
+                    ),
+                    errorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.yellow)
+                    )
+                ),
               ),
-            ),
-            SizedBox(height: 40,),
-            ElevatedButton(
+              SizedBox(height: 40,),
+              ElevatedButton(
 
-              onPressed: (){
-                speek(textEditingController.text);
-              }, child: Text("Press Yes to Listen this Text"),
+                onPressed: (){
+                  speek(textEditingController.text);
+                }, child: Text("Press Yes to Listen this Text"),
 
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
